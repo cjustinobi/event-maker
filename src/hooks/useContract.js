@@ -21,7 +21,7 @@ export const useContract = () => {
     }
 
     contractHandler()
-  }, [EMContractAddress])
+  })
 
   return [contract, provider]
 }
