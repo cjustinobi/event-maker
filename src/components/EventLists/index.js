@@ -147,7 +147,7 @@ const EventLists = () => {
       setEventPage(true)
     }
 
-  })
+  }, [eventList, location.pathname])
 
   return (
 
