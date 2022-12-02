@@ -13,7 +13,7 @@ import styles from './EventLists.module.css'
 const EventLists = () => {
 
   const address = useAddress()
-  const [EMContract, provider] = useContract()
+  const [provider] = useContract()
 
 
 
