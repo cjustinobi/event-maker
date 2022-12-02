@@ -14,7 +14,7 @@ export const useContract = () => {
     const contractHandler = async () => {
 
       const alchemyProvider = new ethers.providers.AlchemyProvider("maticmum", process.env.REACT_APP_ALCHEMY_KEY);
-      const signer = new ethers.Wallet(process.env.REACT_APP_PRIVATE_KEY, alchemyProvider)
+      // const signer = new ethers.Wallet(process.env.REACT_APP_PRIVATE_KEY, alchemyProvider)
       // setContract(new ethers.Contract(momentContractAddress, Moment.abi, signer))
       setProvider(alchemyProvider)
       setContract(new ethers.Contract(EMContractAddress, EventMaker.abi, alchemyProvider))
