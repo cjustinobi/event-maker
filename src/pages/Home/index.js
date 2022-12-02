@@ -1,7 +1,7 @@
 
 import { useNavigate } from 'react-router-dom'
 import Events from '../../components/EventLists'
-import { useContract, useAddress } from '../../hooks'
+// import { useContract } from '../../hooks'
 
 import uspImg from '../../assets/img/usp-img.png'
 
@@ -12,27 +12,19 @@ const Home = () => {
 
   const navigate = useNavigate()
 
-  const EMContract = useContract()
-  const address = useAddress()
+  // const EMContract = useContract()
 
-  const getTime = async () => {
-
-    // const txHash = await momentContract.test()
-    // const txHash = await momentContract.getBlockTime()
-    const txHash = await EMContract.getEventLength()
-    // console.log(txHash)
-    // return console.log(txHash)
-    return console.log(txHash.toNumber())
-
-
-
-  }
+  // const getTime = async () => {
+  //
+  //   const txHash = await EMContract.getEventLength()
+  //   return console.log(txHash.toNumber())
+  // }
 
   return (
     <div className={styles.container}>
       <div className={`app-bg ${styles.hero}`}>
         <h1 className={'app-name'}>Event <br/>Maker</h1>
-          <button style={{color: 'white'}} onClick={getTime}>Get time</button>
+          {/*<button style={{color: 'white'}} onClick={getTime}>Get time</button>*/}
 
       </div>
       <div className={`app-bg app-pd ${styles.usp}`}>

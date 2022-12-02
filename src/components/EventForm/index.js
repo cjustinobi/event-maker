@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { ethers } from 'ethers'
 import { EMContractAddress, iface } from '../../utils'
-import { useAddress, useContract } from '../../hooks'
-import EventMaker from '../../artifacts/contracts/EventMaker.sol/EventMaker.json'
+import { useAddress } from '../../hooks'
 
 
 import { addToIPFS } from '../../utils/ipfs'
@@ -11,7 +10,6 @@ import styles from './EventForm.module.css'
 
 const EventForm= ({ eventForm }) => {
   const address = useAddress()
-  const EMContract = useContract()
 
   const [status, setStatus] = useState('')
   const [loading, setLoading] = useState(false)
@@ -85,7 +83,7 @@ const EventForm= ({ eventForm }) => {
       setLoading(false)
       eventForm(false)
       console.log("😥 " + error)
-      setStatus("😥 " + error.message)
+      setStatus("😥 Counter error")
     }
 
     setStatus(status)

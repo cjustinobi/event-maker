@@ -23,7 +23,7 @@ const EventLists = () => {
 
   const [loading, setLoading] = useState(false)
   const [events, setEvents] = useState([])
-  const [status, setStatus] = useState('')
+  // const [status, setStatus] = useState('')
   const [eventPage, setEventPage] = useState(false)
   const [confirmForm, setConfirmForm] = useState(false)
   const [attendeeAddress, setAttendeeAddress] = useState('')
@@ -163,13 +163,12 @@ const EventLists = () => {
             <button className={styles['rsvp-btn']}
                     onClick={() => rsvp(event.ipfs_pin_hash, event.metadata.keyvalues.deposit)}>RSVP
             </button>
-            {/*<button className={styles['rsvp-btn']} onClick={() => getEvent(event.ipfs_pin_hash)}>Get Event</button>*/}
             {event.metadata.keyvalues.owner === address && (
               <div>
                 {!confirmForm &&
                 <button style={{width: '100%'}} onClick={() => setConfirmForm(true)}>Confirm Attendee</button>}
                 <button className={'payout'} onClick={() => transfer(event.ipfs_pin_hash)}>Payout</button>
-                <button className={'payout'} onClick={() => getEventDetails(event.ipfs_pin_hash)}>Details</button>
+                {/*<button className={'payout'} onClick={() => getEventDetails(event.ipfs_pin_hash)}>Details</button>*/}
               </div>
 
             )}
@@ -189,7 +188,7 @@ const EventLists = () => {
         ))}
       </div>
       {loading && <div className="loader-container"><Loader/></div>}
-      {status && <p>{status}</p>}
+      {/*{status && <p>{status}</p>}*/}
       {loading && events.length === 0 && <p className={styles['no-event']}>No event yet</p>}
     </>
 
