@@ -84,10 +84,10 @@ const EventLists = () => {
 
   }
 
-  const getEventDetails = async eventId => {
-    const res = await EMContract.getEvent(eventId)
-    console.log(res)
-  }
+  // const getEventDetails = async eventId => {
+  //   const res = await EMContract.getEvent(eventId)
+  //   console.log(res)
+  // }
 
   const transfer = async eventId => {
     try {
@@ -147,7 +147,7 @@ const EventLists = () => {
       setEventPage(true)
     }
 
-  }, [location])
+  })
 
   return (
 
