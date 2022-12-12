@@ -158,7 +158,7 @@ const EventLists = () => {
           <div className={eventPage ? styles['page-event-item'] : styles['event-item']} key={i}>
             <h4>{event.metadata.keyvalues.name}</h4>
             <span
-              className={styles.blk}>Refundable Deposit: {ethers.utils.formatEther(event.metadata.keyvalues.deposit)} cUSD</span>
+              className={styles.blk}>Refundable Deposit: {ethers.utils.formatEther(event.metadata.keyvalues.deposit)} MATIC</span>
             <span className={styles.blk}>Capacity: {event.metadata.keyvalues.capacity}</span>
             <span className={styles.blk}>Date: {cleanDate(event.metadata.keyvalues.dateAndTime)}</span>
             <button className={styles['rsvp-btn']}
