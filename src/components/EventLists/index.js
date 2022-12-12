@@ -13,7 +13,7 @@ import styles from './EventLists.module.css'
 const EventLists = () => {
 
   const address = useAddress()
-  const [provider] = useContract()
+  // const [provider] = useContract()
 
 
 
@@ -23,7 +23,6 @@ const EventLists = () => {
 
   const [loading, setLoading] = useState(false)
   const [events, setEvents] = useState([])
-  // const [status, setStatus] = useState('')
   const [eventPage, setEventPage] = useState(false)
   const [confirmForm, setConfirmForm] = useState(false)
   const [attendeeAddress, setAttendeeAddress] = useState('')
@@ -39,7 +38,7 @@ const EventLists = () => {
           data,
           value: ethers.utils.formatEther(deposit)._hex,
           gasLimit: ethers.utils.hexlify(10000),
-          gasPrice: ethers.utils.hexlify(parseInt(await provider.getGasPrice()))
+          // gasPrice: ethers.utils.hexlify(parseInt(await provider.getGasPrice()))
         }
 
         const txHash = await window.ethereum.request({
@@ -98,7 +97,7 @@ const EventLists = () => {
         to: EMContractAddress,
         data,
         gasLimit: ethers.utils.hexlify(10000),
-        gasPrice: ethers.utils.hexlify(parseInt(await provider.getGasPrice()))
+        // gasPrice: ethers.utils.hexlify(parseInt(await provider.getGasPrice()))
       }
 
       const txHash = await window.ethereum.request({
@@ -111,7 +110,7 @@ const EventLists = () => {
     }
   }
 
-  const eventList = useCallback(async () => {
+  const eventList = async () => {
 
     setLoading(true)
 
@@ -124,30 +123,32 @@ const EventLists = () => {
         }
       })
       .then(function (response) {
-        return response.data.rows
+        setLoading(false)
+        setEvents(response.data.rows)
+        // return response.data.rows
       })
       .catch(function (error) {
         console.log(error)
         setLoading(false)
       })
 
-    if (res) {
-      setLoading(false)
-      setEvents(res)
-    }
+    // if (res) {
+    //   setLoading(false)
+    //   setEvents(res)
+    // }
 
-  }, [])
+  }
 
 
   useEffect( () => {
-
+    //
     eventList()
-
+    //
     if (location.pathname === '/events') {
       setEventPage(true)
     }
 
-  }, [eventList, location.pathname])
+  }, [])
 
   return (
 
@@ -188,7 +189,6 @@ const EventLists = () => {
         ))}
       </div>
       {loading && <div className="loader-container"><Loader/></div>}
-      {/*{status && <p>{status}</p>}*/}
       {loading && events.length === 0 && <p className={styles['no-event']}>No event yet</p>}
     </>
 
