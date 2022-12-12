@@ -1,9 +1,9 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { ethers } from 'ethers'
 import axios from 'axios'
 import { cleanDate, EMContractAddress, iface } from '../../utils'
-import { useAddress, useContract } from '../../hooks'
+import { useAddress } from '../../hooks'
 import Loader from '../Loader'
 
 
@@ -115,7 +115,7 @@ const EventLists = () => {
     setLoading(true)
 
     const url = `https://api.pinata.cloud/data/pinList?status=pinned`
-    const res = await axios
+    await axios
       .get(url, {
         headers: {
           'Content-Type': 'application/json',
@@ -125,17 +125,12 @@ const EventLists = () => {
       .then(function (response) {
         setLoading(false)
         setEvents(response.data.rows)
-        // return response.data.rows
       })
       .catch(function (error) {
         console.log(error)
         setLoading(false)
       })
 
-    // if (res) {
-    //   setLoading(false)
-    //   setEvents(res)
-    // }
 
   }
 
@@ -148,7 +143,7 @@ const EventLists = () => {
       setEventPage(true)
     }
 
-  }, [])
+  })
 
   return (
 
